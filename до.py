@@ -1,11 +1,14 @@
-import math
+import pytest
+from mpmath import mp
 from time import perf_counter
 
-def kakashka():
-    pi = str(math.pi).replace(".", "")  
+def kakashka(pi):
     for digit in pi:
-        yield int(digit) / (int(digit) ** 2)  
+        yield int(digit) / (int(digit) ** 2) if int(digit) != 0 else 0
+
+mp.dps = 100000
+pi = str(mp.pi).replace(".", "")  
 start = perf_counter()
-result = sum(kakashka())
+print("Результат: ",*map(sum, map(kakashka, [pi])))
 finish = perf_counter()
-print(f'Время выполнения: {finish-start}\nРезультат: {result}')
+print(f'Время выполнения: {finish-start}')

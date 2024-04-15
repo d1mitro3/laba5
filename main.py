@@ -11,9 +11,9 @@ def test2_kakashka():
     assert wtf == sum(kakashka())
 
 def kakashka():
-    pi = str(math.pi).replace(".", "")  
+    pi = str(math.pi).replace(".", "")  # Генерируем число π и убираем десятичную точку
     for digit in pi:
-        yield int(digit) / (int(digit) ** 2)  
+        yield int(digit) / (int(digit) ** 2)  # Возвращаем результат деления цифры на её квадрат
 
 
 #result = sum(kakashka())
